@@ -1,0 +1,40 @@
+<head>
+  <title>rgolf-m</title>
+</head>
+
+<body>
+  {{> leaderboard}}
+</body>
+
+<template name="leaderboard">
+    <table class="leaderboard">
+        <tr>
+        <th>Spelare</th>
+        {{#each tournaments}}
+        {{> tournament}}
+        {{/each}}
+        <th>Totalt</th>
+        </tr>
+        {{#each players}}
+        {{> player}}
+        {{/each}}
+
+    </table>
+</template>
+
+<template name="player">
+    <tr class="player">
+        <td class="name">{{name}}</td>
+        {{#each findResults _id}}
+        {{> result}}
+        {{/each}}
+    </tr>
+</template>
+
+<template name="result">
+    <td class="result">{{score}}</td>
+</template>
+
+<template name="tournament">
+    <th>{{formatted_date}}</th>
+</template>

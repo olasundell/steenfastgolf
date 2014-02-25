@@ -1,0 +1,86 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    margin: 50px 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#outer {
+    width: 600px;
+    margin: 0 auto;    
+}
+
+table {
+    /*border-collapse: separate;*/
+    border-collapse: collapse;
+    -webkit-border-horizontal-spacing: 2px;
+    -webkit-border-vertical-spacing: 2px;
+    border: 1px solid #555555;
+}
+
+table.leaderboard th {
+    color: #ffffff;
+    background-color: #555555;
+    /*border: 1px solid #555555;*/
+    padding: 3px;
+    border: 1px solid #555555;
+    vertical-align: top;
+    text-align: left;
+}
+
+table.leaderboard tr {
+    border: 1px solid #555555;
+    padding: 3px;
+}
+
+.player {
+    cursor: pointer;
+    padding: 3px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.player .name {
+    display: inline-block;
+    width: 300px;
+}
+
+.player .score {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    font-size: 2em;
+    font-weight: bold;
+    color: #777;
+}
+
+.player.selected {
+    background-color: yellow;
+}
+
+.player.selected .score {
+    color: black;
+}
+
+.details, .none {
+    font-weight: bold;
+    font-size: 2em;
+    border-style: dashed none none none;
+    border-color: #ccc;
+    border-width: 4px;
+    margin: 50px 10px;
+    padding: 10px 0px;
+}
+
+.none {
+    color: #777;
+}
+
+.inc {
+  cursor: pointer;
+}
