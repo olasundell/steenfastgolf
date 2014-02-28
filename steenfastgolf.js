@@ -1,22 +1,58 @@
+function getPlayerInfo() {
+//        return Results.find({});
+//        var players = Players.find({}, {fields: {name: 1}}).sort(function(a, b) { return a._id - b._id;});
+    var players = Players.find({}, {fields: {name: 1}}).fetch();
+    var endarr = [];
+
+    console.log(players);
+
+    for (var i = 0 ; i < players.length ; i++) {
+
+        var currentplayer = "{{name: "+players[i].name+"},";
+        var results = Results.find({player_id: players[i].id}).fetch();
+        var total = 0;
+
+        currentplayer = currentplayer.concat("{scores: ["+ results.join() + "]},");
+
+        for (var j = 0 ; j < results.length ; j++) {
+            total += results[j].score;
+        }
+
+        currentplayer = currentplayer.concat("{total:" + total+"}}");
+        endarr.push(currentplayer);
+    }
+
+    return endarr;
+}
+
 if (Meteor.isClient) {
     Tournaments = new Meteor.Collection("tournament");
     Players = new Meteor.Collection("player");
     Results = new Meteor.Collection("result");
 
-    Template.leaderboard.players = function () {
-//        return Results.find({});
-        var players = Players.find({}, {fields: {name: 1}}).sort(function(a, b) { return a._id - b._id;});
-
-        return players;
-    };
+    Template.leaderboard.players = getPlayerInfo;
 
     Handlebars.registerHelper("findResults", function(player_id) {
         return Results.find({player_id: player_id});
     });
 
+    Handlebars.registerHelper("calcTotal", function(results) {
+        var total = 0;
+
+        results.forEach(function (post) {
+            total += post.score;
+        });
+
+        return total;
+    });
+
     Template.leaderboard.tournaments = function () {
         return Tournaments.find({}, {fields: {formatted_date: 1, datetime: 1}}, {sort: {datetime: 1}});
     };
+
+	Deps.autorun(function() {
+		Meteor.subscribe("player_results");
+	});
 
 //    var DateFormats = {
 //        short: "DD/MM",
@@ -78,8 +114,6 @@ if (Meteor.isServer) {
             "Fantomen", "Dryparn", "Skrotis", "Pelle med gamen", "Krokarn", "Krökis", "Öl-Östen", "Tur-turken",
             "Clara med K", "Supersnippan"];
 
-//        _.each(names, function(doc) {   Players.insert(doc); })
-
         for (var i = 0; i < names.length; i++) {
             ids.push(Players.insert({name: names[i]}));
         }
@@ -106,7 +140,41 @@ if (Meteor.isServer) {
                     player_id: ids[j],
                     tournament_id: tournament_ids[i]});
             }
+
         }
+
+        Meteor.publish('player_results', function() {
+            var playersCursor = Players.find();
+            var playersArr = playersCursor.fetch();
+            var playerIds = _.pluck(playersArr, "id");
+            var resultsCursor = Results.find({ player_id: {$in : playerIds}});
+
+            return [ playersCursor, resultsCursor ];
+        });
     });
+//    Meteor.publish('post', function(id) {
+//        Meteor.publishWithRelations({
+//            handle: this,
+//            collection: Users,
+//            filter: id,
+//            mappings: [{
+//                key: 'userId',
+//                collection: Users
+//            }, {
+//                reverse: true,
+//                key: 'postId',
+//                collection: Results,
+////                filter: { approved: true },
+////                options: {
+////                    limit: 10,
+////                    sort: { createdAt: -1 }
+////                },
+//                mappings: [{
+//                    key: '_id',
+//                    collection: Users
+//                }]
+//            }]
+//        });
+//    });
 }
 

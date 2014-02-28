@@ -1,40 +1,48 @@
 <head>
-  <title>rgolf-m</title>
+	<title>steenfastgolf</title>
 </head>
 
 <body>
-  {{> leaderboard}}
+{{> leaderboard}}
 </body>
 
 <template name="leaderboard">
-    <table class="leaderboard">
-        <tr>
-        <th>Spelare</th>
-        {{#each tournaments}}
-        {{> tournament}}
-        {{/each}}
-        <th>Totalt</th>
-        </tr>
-        {{#each players}}
-        {{> player}}
-        {{/each}}
+	<table class="leaderboard">
+		<tr>
+			<th>Spelare</th>
+			{{#each tournaments}}
+			{{> tournament}}
+			{{/each}}
+			<th>Totalt</th>
+		</tr>
+		{{#each player_results}}
+		{{> player_result }}
+		{{/each}}
+	</table>
+</template>
 
-    </table>
+<template name="player_result">
+	<tr class="player">
+		<td class="name">{{name}}</td>
+		{{#each scores}}
+		<td>ladlas</td>
+		{{/each}}
+	</tr>
 </template>
 
 <template name="player">
-    <tr class="player">
-        <td class="name">{{name}}</td>
-        {{#each findResults _id}}
-        {{> result}}
-        {{/each}}
-    </tr>
+	<tr class="player">
+		<td class="name">{{name}}</td>
+		{{#each scores}}
+		<td>ladlas</td>
+		{{/each}}
+	</tr>
 </template>
 
 <template name="result">
-    <td class="result">{{score}}</td>
+	<td class="result">{{score}}</td>
 </template>
 
 <template name="tournament">
-    <th>{{formatted_date}}</th>
+	<th>{{formatted_date}}</th>
 </template>
