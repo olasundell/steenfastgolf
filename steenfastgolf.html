@@ -25,9 +25,10 @@
 <template name="player">
 	<tr class="player">
 		<td class="name">{{name}}</td>
-		{{#each scores}}
-		<td>{{score}}</td>
+		{{#each userScores _id}}
+		{{> result }}
 		{{/each}}
+		<td class="average">{{averageScore _id}}</td>
 	</tr>
 </template>
 
@@ -36,5 +37,5 @@
 </template>
 
 <template name="tournament">
-	<th>{{formatted_date}}</th>
+	<th>{{formattedDate}}</th>
 </template>
