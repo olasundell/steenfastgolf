@@ -3,6 +3,7 @@
 </head>
 
 <body>
+{{>logs_bootstrap}}
 {{> leaderboard}}
 </body>
 
@@ -15,26 +16,17 @@
 			{{/each}}
 			<th>Totalt</th>
 		</tr>
-		{{#each player_results}}
-		{{> player_result }}
+		{{#each players}}
+		{{> player }}
 		{{/each}}
 	</table>
-</template>
-
-<template name="player_result">
-	<tr class="player">
-		<td class="name">{{name}}</td>
-		{{#each scores}}
-		<td>ladlas</td>
-		{{/each}}
-	</tr>
 </template>
 
 <template name="player">
 	<tr class="player">
 		<td class="name">{{name}}</td>
 		{{#each scores}}
-		<td>ladlas</td>
+		<td>{{score}}</td>
 		{{/each}}
 	</tr>
 </template>

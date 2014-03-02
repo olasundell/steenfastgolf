@@ -7,3 +7,6 @@ standard-app-packages
 insecure
 preserve-inputs
 publish-with-relations
+observatory
+collection-helpers
+coffeescript

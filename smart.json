@@ -1,5 +1,7 @@
 {
   "packages": {
-    "publish-with-relations": {}
+    "publish-with-relations": {},
+    "observatory": {},
+    "collection-helpers": {}
   }
 }
