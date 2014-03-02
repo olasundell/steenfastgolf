@@ -51,10 +51,16 @@ table.leaderboard tr {
 }
 
 .player .score {
-    display: inline-block;
-    width: 100px;
-    text-align: right;
-    font-size: 2em;
+    /*display: inline-block;*/
+    text-align: center;
+    font-size: 1em;
+    color: #777;
+}
+
+.player .average{
+    /*display: inline-block;*/
+    text-align: center;
+    font-size: 1em;
     font-weight: bold;
     color: #777;
 }

@@ -1,5 +1,22 @@
 TL = TLog.getLogger(TLog.LOGLEVEL_INFO, true, true)
 
+recalcAverage = (pId, Scores, Players) ->
+	total = 0
+	num = 0
+	sc = Scores.find({playerId: pId}).fetch()
+
+	while num < sc.length
+		total += sc[num].score
+		num++
+
+	avg = 0
+
+	if num > 0
+		avg = Math.floor(total / num)
+
+	Players.update({_id: pId}, {$set: {averageScore: avg}})
+
+
 Meteor.startup ->
 	# code to run on server at startup
 	Players = new Meteor.Collection("players")
@@ -37,6 +54,7 @@ Meteor.startup ->
 
 	i = 0
 	while i < playerData.length
+		playerData[i].averageScore = 10000
 		p_ids.push(Players.insert(playerData[i]))
 		TL.debug("Just inserted player " + playerData[i] + " return id is "+p_ids[i])
 		i++
@@ -53,6 +71,7 @@ Meteor.startup ->
 			s = { score: score, tournamentId: t_ids[i], playerId: p_ids[j] }
 			rid = Scores.insert(s)
 			TL.debug("Just inserted score " + s + ", return id is "+ rid)
+			recalcAverage p_ids[j], Scores, Players
 
 			j++
 		i++

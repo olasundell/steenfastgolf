@@ -14,7 +14,7 @@
 			{{#each tournaments}}
 			{{> tournament}}
 			{{/each}}
-			<th>Totalt</th>
+			<th>Snitt</th>
 		</tr>
 		{{#each players}}
 		{{> player }}
@@ -26,14 +26,14 @@
 	<tr class="player">
 		<td class="name">{{name}}</td>
 		{{#each userScores _id}}
-		{{> result }}
+		{{> score }}
 		{{/each}}
-		<td class="average">{{averageScore _id}}</td>
+		<td class="average">{{averageScore}}</td>
 	</tr>
 </template>
 
-<template name="result">
-	<td class="result">{{score}}</td>
+<template name="score">
+	<td class="score">{{score}}</td>
 </template>
 
 <template name="tournament">
