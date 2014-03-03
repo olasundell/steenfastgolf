@@ -7,7 +7,7 @@ Meteor.subscribe "scoresPublish"
 Meteor.subscribe "tournamentsPublish"
 Meteor.subscribe "playersPublish"
 
-Template.leaderboard.players = Players.find {}, {sort: {averageScore: 1}}
+Template.leaderboard.players = Players.find {}, {sort: {totalScore: 1}}
 Template.leaderboard.tournaments = Tournaments.find {}
 Template.leaderboard.scores = Scores.find {}
 

@@ -1,5 +1,16 @@
 TL = TLog.getLogger(TLog.LOGLEVEL_INFO, true, true)
 
+recalcTotal = (pId, Scores, Players) ->
+	total = 0
+	num = 0
+	sc = Scores.find({playerId: pId}).fetch()
+
+	while num < sc.length
+		total += sc[num].score
+		num++
+
+	Players.update({_id: pId}, {$set: {totalScore: total}})
+
 recalcAverage = (pId, Scores, Players) ->
 	total = 0
 	num = 0
@@ -40,8 +51,8 @@ Meteor.startup ->
 	formattedDate2 = date2.getDate().toString() + "/" + (date2.getMonth() + 1).toString()
 	date3 = new Date(2014, 2, 13)
 	formattedDate3 = date3.getDate().toString() + "/" + (date3.getMonth() + 1).toString()
-	dates = [ { date: date, formattedDate: formattedDate }, { date: date2, formattedDate: formattedDate2 },
-		{ date: date3, formattedDate: formattedDate3 } ]
+	dates = [ { alias: "Pebble Beach", date: date, formattedDate: formattedDate }, { alias: "St Andrews", date: date2, formattedDate: formattedDate2 },
+		{ alias: "Kungsängen", date: date3, formattedDate: formattedDate3 } ]
 
 	t_ids = []
 	p_ids = []
@@ -54,7 +65,7 @@ Meteor.startup ->
 
 	i = 0
 	while i < playerData.length
-		playerData[i].averageScore = 10000
+		playerData[i].totalScore = 0
 		p_ids.push(Players.insert(playerData[i]))
 		TL.debug("Just inserted player " + playerData[i] + " return id is "+p_ids[i])
 		i++
@@ -71,7 +82,7 @@ Meteor.startup ->
 			s = { score: score, tournamentId: t_ids[i], playerId: p_ids[j] }
 			rid = Scores.insert(s)
 			TL.debug("Just inserted score " + s + ", return id is "+ rid)
-			recalcAverage p_ids[j], Scores, Players
+			recalcTotal p_ids[j], Scores, Players
 
 			j++
 		i++

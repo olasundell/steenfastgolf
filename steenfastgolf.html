@@ -3,7 +3,7 @@
 </head>
 
 <body>
-{{>logs_bootstrap}}
+<img src="fabio.jpg"/>
 {{> leaderboard}}
 </body>
 
@@ -14,7 +14,7 @@
 			{{#each tournaments}}
 			{{> tournament}}
 			{{/each}}
-			<th>Snitt</th>
+			<th>Totalt</th>
 		</tr>
 		{{#each players}}
 		{{> player }}
@@ -28,7 +28,7 @@
 		{{#each userScores _id}}
 		{{> score }}
 		{{/each}}
-		<td class="average">{{averageScore}}</td>
+		<td class="average">{{totalScore}}</td>
 	</tr>
 </template>
 
@@ -37,5 +37,5 @@
 </template>
 
 <template name="tournament">
-	<th>{{formattedDate}}</th>
+	<th>{{alias}} {{formattedDate}}</th>
 </template>
