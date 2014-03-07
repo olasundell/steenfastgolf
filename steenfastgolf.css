@@ -1,7 +1,7 @@
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 200;
-    margin: 50px 0;
+    /*margin: 50px 0;*/
     padding: 0;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -15,12 +15,31 @@ body {
     margin: 0 auto;    
 }
 
+.imageleft {
+    text-align: left;
+    float: left;
+    display: block;
+    width: 20%;
+}
+
+.imageright {
+    vertical-align: top;
+    text-align: right;
+    float: right;
+    display: block;
+    width: 20%;
+}
+
 table {
     /*border-collapse: separate;*/
     border-collapse: collapse;
     -webkit-border-horizontal-spacing: 2px;
     -webkit-border-vertical-spacing: 2px;
+    text-align: center;
+    overflow: auto;
+    vertical-align: middle;
     border: 1px solid #555555;
+    width: 60%;
 }
 
 table.leaderboard th {
@@ -29,13 +48,23 @@ table.leaderboard th {
     /*border: 1px solid #555555;*/
     padding: 3px;
     border: 1px solid #555555;
-    vertical-align: top;
+    /*vertical-align: top;*/
     text-align: left;
 }
 
 table.leaderboard tr {
     border: 1px solid #555555;
     padding: 3px;
+}
+
+table.leaderboard input.newtournament {
+	width: 100%;
+	border: 1px solid #555555;
+	padding: 3px;
+}
+
+table.leaderboard input.newplayer {
+	width: 100%;
 }
 
 .player {
@@ -45,22 +74,15 @@ table.leaderboard tr {
     text-align: left;
 }
 
-.player .name {
-    display: inline-block;
-    width: 300px;
-}
-
 .player .score {
     /*display: inline-block;*/
     text-align: center;
-    font-size: 1em;
     color: #777;
 }
 
 .player .average{
     /*display: inline-block;*/
     text-align: center;
-    font-size: 1em;
     font-weight: bold;
     color: #777;
 }

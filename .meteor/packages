@@ -10,3 +10,5 @@ publish-with-relations
 observatory
 collection-helpers
 coffeescript
+accounts-ui
+accounts-password

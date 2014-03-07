@@ -3,7 +3,13 @@
 </head>
 
 <body>
-<img src="fabio.jpg"/>
+{{loginButtons}}
+<div class="imageleft">
+	<img src="left.jpg"/>
+</div>
+<div class="imageright">
+	<img src="right.jpg"/>
+</div>
 {{> leaderboard}}
 </body>
 
@@ -14,11 +20,19 @@
 			{{#each tournaments}}
 			{{> tournament}}
 			{{/each}}
+			{{#if currentUser}}
+			<th>
+				<input class="newtournament" type="submit" name="new-tournament" value="+" />
+			</th>
+			{{/if}}
 			<th>Totalt</th>
 		</tr>
 		{{#each players}}
 		{{> player }}
 		{{/each}}
+		{{#if currentUser}}
+			<tr><td><input class="newplayer" type="text" name="new-player" placeholder="Ny spelare" /></td></tr>
+		{{/if}}
 	</table>
 </template>
 
@@ -28,12 +42,22 @@
 		{{#each userScores _id}}
 		{{> score }}
 		{{/each}}
+		{{#if currentUser}}
+		<td></td>
+		{{/if}}
 		<td class="average">{{totalScore}}</td>
 	</tr>
 </template>
 
 <template name="score">
+	{{#if currentUser}}
+	<td class="score">
+		<input class="score" type="text" name="{{tournamentId}}-{{playerId}}" size=3 value="{{score}}"/>
+		<!--{{tournamentId}}-{{playerId}}-->
+	</td>
+	{{else}}
 	<td class="score">{{score}}</td>
+	{{/if}}
 </template>
 
 <template name="tournament">

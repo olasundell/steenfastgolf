@@ -11,6 +11,29 @@ Template.leaderboard.players = Players.find {}, {sort: {totalScore: 1}}
 Template.leaderboard.tournaments = Tournaments.find {}
 Template.leaderboard.scores = Scores.find {}
 
+#Template.todos.events(okCancelEvents(
+#		'#new-todo',
+#		{
+#			ok: function (text, evt) {
+#	var tag = Session.get('tag_filter');
+#	Todos.insert({
+#		text: text,
+#		list_id: Session.get('list_id'),
+#		done: false,
+#		timestamp: (new Date()).getTime(),
+#		tags: tag ? [tag] : []
+#});
+#evt.target.value = '';
+#}
+#}));
+
+#Template.leaderboard.events
+#{
+#	'dblclick': (event) ->
+#		window.alert("foo")
+#		preventDefault()
+#}
+
 Handlebars.registerHelper 'userScores', (pId) ->
 	return Scores.find {playerId: pId}
 
