@@ -4,7 +4,8 @@
     "basePackages": {
       "publish-with-relations": {},
       "observatory": {},
-      "collection-helpers": {}
+      "collection-helpers": {},
+      "sass": {}
     },
     "packages": {
       "publish-with-relations": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/dburles/meteor-collection-helpers.git",
         "tag": "v0.2.3",
         "commit": "52c4c692421acea557fb329f43f65ed11b4832df"
+      },
+      "sass": {
+        "git": "https://github.com/particle4dev/meteor-sass.git",
+        "tag": "v0.0.3",
+        "commit": "5e957704136b262dccc4c66666d54f5734441f17"
       },
       "observatory-apollo": {
         "git": "https://github.com/superstringsoftware/observatory-apollo.git",

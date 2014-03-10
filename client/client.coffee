@@ -27,6 +27,10 @@ Template.leaderboard.scores = Scores.find {}
 #}
 #}));
 
+Template.leaderboard.events = {
+	'click #new-tournament': ->
+
+}
 #Template.leaderboard.events
 #{
 #	'dblclick': (event) ->

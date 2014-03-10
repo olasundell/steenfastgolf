@@ -2,6 +2,7 @@
   "packages": {
     "publish-with-relations": {},
     "observatory": {},
-    "collection-helpers": {}
+    "collection-helpers": {},
+	"sass": {}
   }
 }
