@@ -29,7 +29,7 @@ Template.leaderboard.scores = Scores.find {}
 
 Template.leaderboard.events = {
 	'click #new-tournament': ->
-
+		document.getElementById("new-tournament").innerHTML = '<div class="new-tournament-dialog"><a>Ny omgång</a></div>'
 }
 #Template.leaderboard.events
 #{

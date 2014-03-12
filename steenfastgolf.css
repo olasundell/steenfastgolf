@@ -71,6 +71,62 @@
 		width: 100%;
 	}
 
+	table.leaderboard .new-tournament-dialog {
+		right: 200px;
+		top: 0px;
+		position: absolute;
+		background: none repeat scroll 0 0 #FFFFFF;
+		width: 198px;
+		height: 198px;
+		z-index: 1000;
+		/*margin: -8px -12px 0;*/
+		padding: 8px 12px;
+		float: left;
+		padding-bottom: 8px;
+		position: relative;
+		cursor: pointer;
+		text-decoration: underline;
+		font-family: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		cursor: pointer;
+		text-decoration: underline;
+		line-height: 1.6;
+		color: inherit;
+		font: inherit;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+	}
+
+	table.leaderboard .new-tournament-dialog a {
+		right: 200px;
+		top: 0px;
+		position: absolute;
+		background: none repeat scroll 0 0 #FFFFFF;
+		width: 198px;
+		height: 198px;
+		z-index: 1000;
+		/*margin: -8px -12px 0;*/
+		padding: 8px 12px;
+		float: left;
+		padding-bottom: 8px;
+		position: relative;
+		cursor: pointer;
+		text-decoration: underline;
+		font-family: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		cursor: pointer;
+		text-decoration: underline;
+		line-height: 1.6;
+		color: inherit;
+		font: inherit;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+	}
+
 	.player {
 		cursor: pointer;
 		padding: 3px;
