@@ -11,52 +11,18 @@ Template.leaderboard.players = Players.find {}, {sort: {totalScore: 1}}
 Template.leaderboard.tournaments = Tournaments.find {}
 Template.leaderboard.scores = Scores.find {}
 
-#Template.todos.events(okCancelEvents(
-#		'#new-todo',
-#		{
-#			ok: function (text, evt) {
-#	var tag = Session.get('tag_filter');
-#	Todos.insert({
-#		text: text,
-#		list_id: Session.get('list_id'),
-#		done: false,
-#		timestamp: (new Date()).getTime(),
-#		tags: tag ? [tag] : []
-#});
-#evt.target.value = '';
-#}
-#}));
+newTournamentDialogMarkup = '<div id="new-tournament-dialog" class="new-tournament-dialog"><p>Ny omgång</p><a id="close-new-tournament" class="new-tournament-close-button">Stäng</a></div>'
 
-Template.leaderboard.events = {
+eventMap = {
+	'click .new-tournament-close-button': ->
+		dialog = document.getElementById("new-tournament-dialog")
+		dialog.parentNode.removeChild(dialog)
 	'click #new-tournament': ->
-		document.getElementById("new-tournament").innerHTML = '<div class="new-tournament-dialog"><a>Ny omgång</a></div>'
+		newTournament = document.getElementById("new-tournament")
+		newTournament.parentNode.innerHTML = newTournament.parentNode.innerHTML + newTournamentDialogMarkup
 }
-#Template.leaderboard.events
-#{
-#	'dblclick': (event) ->
-#		window.alert("foo")
-#		preventDefault()
-#}
+
+Template.leaderboard.events = eventMap
 
 Handlebars.registerHelper 'userScores', (pId) ->
 	return Scores.find {playerId: pId}
-
-#Handlebars.registerHelper 'averageScore', (pId) ->
-#	total = 0
-#	num = 0
-#	sc = Scores.find({playerId: pId}).fetch()
-#
-#	TL.debug("Scores are " + sc.toSource())
-#
-#	while num < sc.length
-#		total += sc[num].score
-#		num++
-#
-#	avg = 0
-#
-#	if num > 0
-#		avg = Math.floor(total / num)
-#
-#	TL.info("About to return average "+avg)
-#
-#	return avg

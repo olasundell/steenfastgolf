@@ -1,40 +1,8 @@
 TL = TLog.getLogger(TLog.LOGLEVEL_INFO, true, true)
 
-recalcTotal = (pId, Scores, Players) ->
-	total = 0
-	num = 0
-	sc = Scores.find({playerId: pId}).fetch()
-
-	while num < sc.length
-		total += sc[num].score
-		num++
-
-	Players.update({_id: pId}, {$set: {totalScore: total}})
-
-recalcAverage = (pId, Scores, Players) ->
-	total = 0
-	num = 0
-	sc = Scores.find({playerId: pId}).fetch()
-
-	while num < sc.length
-		total += sc[num].score
-		num++
-
-	avg = 0
-
-	if num > 0
-		avg = Math.floor(total / num)
-
-	Players.update({_id: pId}, {$set: {averageScore: avg}})
-
-
-Meteor.startup ->
-	# code to run on server at startup
-	Players = new Meteor.Collection("players")
+initDb = (Players, Tournaments, Scores) ->
 	Players.remove {}
-	Tournaments = new Meteor.Collection("tournaments")
 	Tournaments.remove {}
-	Scores = new Meteor.Collection("scores")
 	Scores.remove {}
 
 	playerData = [ { name: "Kniv-Lasse" }, { name: "Stenis" }, { name: "Lill-Klas" }, { name: "Ubbe Järnrör" },
@@ -42,8 +10,6 @@ Meteor.startup ->
 		{ name: "Dryparn" }, { name: "Skrotis" }, { name: "Pelle med gamen" }, { name: "Krokarn" },
 		{ name: "Krökis" }, { name: "Öl-Östen" }, { name: "Tur-turken" }, { name: "Clara med K" },
 		{ name: "Supersnippan" } ]
-
-
 
 	date = new Date(2014, 2, 1)
 	formattedDate = date.getDate().toString() + "/" + (date.getMonth() + 1).toString()
@@ -86,7 +52,48 @@ Meteor.startup ->
 
 			j++
 		i++
-	i = 0
+
+	return
+
+recalcTotal = (pId, Scores, Players) ->
+	total = 0
+	num = 0
+	sc = Scores.find({playerId: pId}).fetch()
+
+	while num < sc.length
+		total += sc[num].score
+		num++
+
+	Players.update({_id: pId}, {$set: {totalScore: total}})
+
+recalcAverage = (pId, Scores, Players) ->
+	total = 0
+	num = 0
+	sc = Scores.find({playerId: pId}).fetch()
+
+	while num < sc.length
+		total += sc[num].score
+		num++
+
+	avg = 0
+
+	if num > 0
+		avg = Math.floor(total / num)
+
+	Players.update({_id: pId}, {$set: {averageScore: avg}})
+
+
+Meteor.startup ->
+	# code to run on server at startup
+	Players = new Meteor.Collection("players")
+	Tournaments = new Meteor.Collection("tournaments")
+	Scores = new Meteor.Collection("scores")
+
+	initDbNow = false
+
+	if initDbNow
+		initDb(Players, Tournaments, Scores)
+
 
 	Meteor.publish "playersPublish", ->
 		return Players.find({})
@@ -126,3 +133,4 @@ Meteor.startup ->
 #		)
 
 	return
+

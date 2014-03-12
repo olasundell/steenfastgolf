@@ -49,10 +49,8 @@
 	table.leaderboard th {
 		color: #ffffff;
 		background-color: #555555;
-		/*border: 1px solid #555555;*/
 		padding: 3px;
 		border: 1px solid #555555;
-		/*vertical-align: top;*/
 		text-align: left;
 	}
 
@@ -72,59 +70,21 @@
 	}
 
 	table.leaderboard .new-tournament-dialog {
-		right: 200px;
-		top: 0px;
-		position: absolute;
-		background: none repeat scroll 0 0 #FFFFFF;
-		width: 198px;
-		height: 198px;
+		float: right;
 		z-index: 1000;
-		/*margin: -8px -12px 0;*/
+		border-radius: 4px;
 		padding: 8px 12px;
-		float: left;
-		padding-bottom: 8px;
-		position: relative;
-		cursor: pointer;
-		text-decoration: underline;
-		font-family: inherit;
-		font-size: inherit;
-		line-height: inherit;
-		cursor: pointer;
-		text-decoration: underline;
-		line-height: 1.6;
-		color: inherit;
-		font: inherit;
-		margin: 0;
-		padding: 0;
-		display: inline-block;
+		border: 1px solid rgb(204, 204, 204);
+		box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
+		background: none repeat scroll 0% 0% white;
+		position: absolute;
+		color: black;
+		/*top: -1px;*/
+		/*left: -1px;*/
 	}
 
 	table.leaderboard .new-tournament-dialog a {
-		right: 200px;
-		top: 0px;
-		position: absolute;
-		background: none repeat scroll 0 0 #FFFFFF;
-		width: 198px;
-		height: 198px;
-		z-index: 1000;
-		/*margin: -8px -12px 0;*/
-		padding: 8px 12px;
-		float: left;
-		padding-bottom: 8px;
-		position: relative;
 		cursor: pointer;
-		text-decoration: underline;
-		font-family: inherit;
-		font-size: inherit;
-		line-height: inherit;
-		cursor: pointer;
-		text-decoration: underline;
-		line-height: 1.6;
-		color: inherit;
-		font: inherit;
-		margin: 0;
-		padding: 0;
-		display: inline-block;
 	}
 
 	.player {
