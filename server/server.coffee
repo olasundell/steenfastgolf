@@ -89,7 +89,7 @@ Meteor.startup ->
 	Tournaments = new Meteor.Collection("tournaments")
 	Scores = new Meteor.Collection("scores")
 
-	initDbNow = false
+	initDbNow = true
 
 	if initDbNow
 		initDb(Players, Tournaments, Scores)

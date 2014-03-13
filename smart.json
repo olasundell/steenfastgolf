@@ -3,6 +3,7 @@
     "publish-with-relations": {},
     "observatory": {},
     "collection-helpers": {},
-	"sass": {}
+    "sass": {},
+    "bootstrap-datepicker2": {}
   }
 }

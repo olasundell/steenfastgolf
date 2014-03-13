@@ -12,3 +12,6 @@ collection-helpers
 coffeescript
 accounts-ui
 accounts-password
+sass
+bootstrap
+bootstrap-datepicker2
