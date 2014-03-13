@@ -21,7 +21,6 @@
 		float: left;
 		display: block;
 		width: 20%;
-		/*max-width: 15%;*/
 	}
 
 	.imageright {
@@ -30,7 +29,6 @@
 		float: right;
 		display: block;
 		width: 20%;
-		/*max-width: 15%;*/
 	}
 
 	table {
@@ -43,7 +41,6 @@
 		vertical-align: middle;
 		border: 1px solid #555555;
 		width: 60%;
-		/*max-width: 80%;*/
 	}
 
 	table.leaderboard th {
@@ -80,8 +77,6 @@
 		background: none repeat scroll 0% 0% white;
 		position: absolute;
 		color: black;
-		/*top: -1px;*/
-		/*left: -1px;*/
 	}
 
 	table.leaderboard .new-tournament-dialog a {

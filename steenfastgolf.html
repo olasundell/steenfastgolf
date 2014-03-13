@@ -33,7 +33,7 @@
 		{{> player }}
 		{{/each}}
 		{{#if currentUser}}
-			<tr><td><input class="newplayer" type="text" name="new-player" placeholder="Ny spelare" /></td></tr>
+			<tr><td><input class="newplayer" type="text" id="new-player" placeholder="Ny spelare" /></td></tr>
 		{{/if}}
 	</table>
 </template>
@@ -54,8 +54,7 @@
 <template name="score">
 	{{#if currentUser}}
 	<td class="score">
-		<input class="score" type="text" name="{{tournamentId}}-{{playerId}}" size=3 value="{{score}}"/>
-		<!--{{tournamentId}}-{{playerId}}-->
+		<input class="score score-input" type="text" id="{{_id}}" size=3 value="{{score}}"/>
 	</td>
 	{{else}}
 	<td class="score">{{score}}</td>

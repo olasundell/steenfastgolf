@@ -71,7 +71,18 @@ eventMap = {
 		Scores.insert({ score: 104, tournamentId: t_id, playerId: player._id }) for player in players.fetch()
 
 		closeNewTournamentDialog()
-
+	'keypress #new-player': (event) ->
+		if event.which == 13
+			tournaments = Tournaments.find({})
+			t_arr = tournaments.fetch()
+			id = Players.insert({name: document.getElementById("new-player").value, totalScore: Math.floor(t_arr.length * 104) })
+			Scores.insert({score: 104, tournamentId: tournament._id, playerId: id}) for tournament in t_arr
+	'keypress .score-input': (event) ->
+		if event.which == 13
+			id = event.target.id
+			alert id
+			Scores.update({_id: id}, {$set: {score: parseInt(event.target.value)}})
+			recalcTotal player._id for player in Players.find({}).fetch()
 }
 
 
@@ -84,3 +95,15 @@ Template.leaderboard.rendered = ->
 
 Handlebars.registerHelper 'userScores', (pId) ->
 	return Scores.find {playerId: pId}
+
+recalcTotal = (pId) ->
+	total = 0
+	num = 0
+	sc = Scores.find({playerId: pId}).fetch()
+
+	while num < sc.length
+		total += sc[num].score
+		num++
+
+	Players.update({_id: pId}, {$set: {totalScore: total}})
+
