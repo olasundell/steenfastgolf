@@ -1,134 +1,127 @@
-@media screen and (min-width: 480px) {
-	body {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		font-weight: 200;
-		/*margin: 50px 0;*/
-		padding: 0;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-o-user-select: none;
-		user-select: none;
-	}
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 200;
+	/*margin: 50px 0;*/
+	padding: 0;
+}
 
-	.imageleft {
-		text-align: left;
-		float: left;
-		display: block;
-		width: 20%;
-	}
+.imageleft {
+	text-align: left;
+	float: left;
+	display: block;
+	/*width: 20%;*/
+}
 
-	.imageright {
-		vertical-align: top;
-		text-align: right;
-		float: right;
-		display: block;
-		width: 20%;
-	}
+.imageright {
+	vertical-align: top;
+	text-align: right;
+	float: right;
+	display: block;
+	/*width: 20%;*/
+}
 
-	table.leaderboard {
-		width: 60%;
-	}
+table.leaderboard {
+	/*width: 60%;*/
+}
 
-	table.leaderboard th {
-		white-space: nowrap;
-		vertical-align: middle;
-	}
-	table.leaderboard input.newtournament {
-		width: 100%;
-		border: 1px solid #555555;
-		padding: 3px;
-	}
+table.leaderboard th {
+	white-space: nowrap;
+	vertical-align: middle;
+}
+table.leaderboard input.newtournament {
+	width: 100%;
+	border: 1px solid #555555;
+	padding: 3px;
+}
 
-	table.leaderboard input.newplayer {
-		width: 100%;
-	}
+table.leaderboard input.newplayer {
+	width: 100%;
+}
 
-	table.leaderboard .new-tournament-dialog {
-		float: right;
-		z-index: 1000;
-		border-radius: 4px;
-		padding: 8px 12px;
-		border: 1px solid rgb(204, 204, 204);
-		box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
-		background: none repeat scroll 0% 0% white;
-		position: absolute;
-		width: 20em;
-		color: black;
-	}
+table.leaderboard .new-tournament-dialog {
+	float: right;
+	z-index: 1000;
+	border-radius: 4px;
+	padding: 8px 12px;
+	border: 1px solid rgb(204, 204, 204);
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
+	background: none repeat scroll 0% 0% white;
+	position: absolute;
+	width: 20em;
+	color: black;
+}
 
-	table.leaderboard .new-tournament-dialog a {
-		cursor: pointer;
-	}
+table.leaderboard .new-tournament-dialog a {
+	cursor: pointer;
+}
 
-	table.leaderboard .new-tournament-dialog ul {
-		float: left;
-		list-style: none;
-		margin: 0 0 0 0;
-	}
+table.leaderboard .new-tournament-dialog ul {
+	float: left;
+	list-style: none;
+	margin: 0 0 0 0;
+}
 
-	table.leaderboard .new-tournament-dialog ul .side-by-side {
-		width: 100%;
-		display: inline;
-	}
+table.leaderboard .new-tournament-dialog ul .side-by-side {
+	width: 100%;
+	display: inline;
+}
 
-	table.leaderboard .new-tournament-dialog li  {
-		float: left;
-		margin: 0 0 0 0;
-		display: inline-block;
-	}
-	table.leaderboard .new-tournament-dialog .full-width {
-		width: 100%;
-	}
+table.leaderboard .new-tournament-dialog li  {
+	float: left;
+	margin: 0 0 0 0;
+	display: inline-block;
+}
+table.leaderboard .new-tournament-dialog .full-width {
+	width: 100%;
+}
 
-	table.leaderboard .new-tournament-dialog li .input-li {
-		float: right;
-	}
+table.leaderboard .new-tournament-dialog li .input-li {
+	float: right;
+}
 
-	table.leaderboard .new-tournament-dialog label {
-		width: 30%;
-	}
+table.leaderboard .new-tournament-dialog label {
+	width: 30%;
+}
 
-	table.leaderboard .new-tournament-dialog input {
-		/* needs an explicit override of width because bootstrap is evil */
-		width: inherit;
-	}
+table.leaderboard .new-tournament-dialog input {
+	/* needs an explicit override of width because bootstrap is evil */
+	width: inherit;
+}
 
-	table.leaderboard .new-tournament-dialog .new-tournament-close-button {
-		text-align: right;
-		float: right;
-	}
+table.leaderboard .new-tournament-dialog .new-tournament-close-button {
+	text-align: right;
+	float: right;
+}
 
-	.player {
-		cursor: pointer;
-		padding: 3px;
-		vertical-align: top;
-		text-align: left;
-	}
+.player {
+	cursor: pointer;
+	padding: 3px;
+	vertical-align: top;
+	text-align: left;
+}
 
-	.player .score {
-		text-align: center;
-		vertical-align: middle;
-		line-height: 0;
-		margin-bottom: 0;
-		padding: 1px;
-		height: 1em;
-		width: 3em;
-		color: #777;
-	}
+.player .score {
+	text-align: center;
+	vertical-align: middle;
+	line-height: 0;
+	margin-bottom: 0;
+	padding: 1px;
+	height: 1em;
+	width: 3em;
+	color: #777;
+}
 
-	.player.selected {
-		background-color: yellow;
-	}
+.player.selected {
+	background-color: yellow;
+}
 
-	.player.selected .score {
-		line-height: 0px;
-		color: #777;
-	}
+.player.selected .score {
+	line-height: 0px;
+	color: #777;
+}
 
-	.player .average {
-		text-align: center;
-		font-weight: bold;
-		color: #777;
-	}
+.player .average {
+	text-align: center;
+	font-weight: bold;
+	color: #777;
 }

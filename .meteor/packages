@@ -13,5 +13,5 @@ coffeescript
 accounts-ui
 accounts-password
 sass
-bootstrap
 bootstrap-datepicker2
+bootstrap-3

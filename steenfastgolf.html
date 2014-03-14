@@ -1,45 +1,54 @@
 <head>
 	<title>steenfastgolf</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-{{loginButtons}}
-<div class="imageleft">
-	<img src="left.jpg"/>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 col-lg-2">
+			<img class="img-responsive hidden-sm hidden-xs" src="left.jpg"/>
+		</div>
+		<div class="col-md-8 col-lg-8">
+			{{loginButtons}}
+			{{> leaderboard}}
+		</div>
+		<div class="col-md-2 col-lg-2">
+			<img class="img-responsive hidden-sm hidden-xs" src="right.jpg"/>
+		</div>
+	</div>
 </div>
-<div class="imageright">
-	<img src="right.jpg"/>
-</div>
-{{> leaderboard}}
 </body>
 
 <template name="leaderboard">
-	<table class="table table-striped leaderboard">
-		<thead>
-			<tr>
-				<th>Spelare</th>
-				{{#each tournaments}}
-				{{> tournament}}
-				{{/each}}
-				{{#if currentUser}}
-				<th>
-					<div id="new-tournament" class="newtournament">
-						<input class="btn" type="submit" name="new-tournament" value="+" />
-					</div>
-				</th>
-				{{/if}}
-				<th>Totalt</th>
-			</tr>
-		</thead>
-		<tbody>
-		{{#each players}}
-		{{> player }}
-		{{/each}}
-		{{#if currentUser}}
-			<tr><td><input class="newplayer" type="text" id="new-player" placeholder="Ny spelare" /></td></tr>
-		{{/if}}
-		</tbody>
-	</table>
+	<div class="table-responsive">
+		<table class="table table-striped leaderboard">
+			<thead>
+				<tr>
+					<th>Spelare</th>
+					{{#each tournaments}}
+					{{> tournament}}
+					{{/each}}
+					{{#if currentUser}}
+					<th>
+						<div id="new-tournament" class="newtournament">
+							<input class="btn" type="submit" name="new-tournament" value="+" />
+						</div>
+					</th>
+					{{/if}}
+					<th>Totalt</th>
+				</tr>
+			</thead>
+			<tbody>
+			{{#each players}}
+			{{> player }}
+			{{/each}}
+			{{#if currentUser}}
+				<tr><td><input class="newplayer" type="text" id="new-player" placeholder="Ny spelare" /></td></tr>
+			{{/if}}
+			</tbody>
+		</table>
+	</div>
 </template>
 
 <template name="player">
