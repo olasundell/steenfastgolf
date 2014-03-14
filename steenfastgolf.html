@@ -14,27 +14,31 @@
 </body>
 
 <template name="leaderboard">
-	<table class="leaderboard">
-		<tr>
-			<th>Spelare</th>
-			{{#each tournaments}}
-			{{> tournament}}
-			{{/each}}
-			{{#if currentUser}}
-			<th>
-				<div id="new-tournament" class="newtournament">
-					<input class="newtournament" type="submit" name="new-tournament" value="+" />
-				</div>
-			</th>
-			{{/if}}
-			<th>Totalt</th>
-		</tr>
+	<table class="table table-striped leaderboard">
+		<thead>
+			<tr>
+				<th>Spelare</th>
+				{{#each tournaments}}
+				{{> tournament}}
+				{{/each}}
+				{{#if currentUser}}
+				<th>
+					<div id="new-tournament" class="newtournament">
+						<input class="btn" type="submit" name="new-tournament" value="+" />
+					</div>
+				</th>
+				{{/if}}
+				<th>Totalt</th>
+			</tr>
+		</thead>
+		<tbody>
 		{{#each players}}
 		{{> player }}
 		{{/each}}
 		{{#if currentUser}}
 			<tr><td><input class="newplayer" type="text" id="new-player" placeholder="Ny spelare" /></td></tr>
 		{{/if}}
+		</tbody>
 	</table>
 </template>
 

@@ -11,11 +11,6 @@
 		user-select: none;
 	}
 
-	/*#outer {*/
-		/*width: 600px;*/
-		/*margin: 0 auto;*/
-	/*}*/
-
 	.imageleft {
 		text-align: left;
 		float: left;
@@ -31,32 +26,14 @@
 		width: 20%;
 	}
 
-	table {
-		/*border-collapse: separate;*/
-		border-collapse: collapse;
-		-webkit-border-horizontal-spacing: 2px;
-		-webkit-border-vertical-spacing: 2px;
-		text-align: center;
-		overflow: auto;
-		vertical-align: middle;
-		border: 1px solid #555555;
+	table.leaderboard {
 		width: 60%;
 	}
 
 	table.leaderboard th {
-		color: #ffffff;
-		background-color: #555555;
-		padding: 3px;
-		border: 1px solid #555555;
-		text-align: left;
 		white-space: nowrap;
+		vertical-align: middle;
 	}
-
-	table.leaderboard tr {
-		border: 1px solid #555555;
-		padding: 3px;
-	}
-
 	table.leaderboard input.newtournament {
 		width: 100%;
 		border: 1px solid #555555;
@@ -130,8 +107,8 @@
 	}
 
 	.player .score {
-		/*display: inline-block;*/
 		text-align: center;
+		vertical-align: middle;
 		line-height: 0;
 		margin-bottom: 0;
 		padding: 1px;
@@ -150,36 +127,8 @@
 	}
 
 	.player .average {
-		/*display: inline-block;*/
 		text-align: center;
 		font-weight: bold;
 		color: #777;
-	}
-
-	.player.selected {
-		background-color: yellow;
-	}
-
-	.player.selected .score {
-		line-height: 0px;
-		color: black;
-	}
-
-	.details, .none {
-		font-weight: bold;
-		font-size: 2em;
-		border-style: dashed none none none;
-		border-color: #ccc;
-		border-width: 4px;
-		margin: 50px 10px;
-		padding: 10px 0px;
-	}
-
-	.none {
-		color: #777;
-	}
-
-	.inc {
-		cursor: pointer;
 	}
 }
