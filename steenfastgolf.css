@@ -76,6 +76,7 @@
 		box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.2);
 		background: none repeat scroll 0% 0% white;
 		position: absolute;
+		width: 20em;
 		color: black;
 	}
 
@@ -89,9 +90,18 @@
 		margin: 0 0 0 0;
 	}
 
+	table.leaderboard .new-tournament-dialog ul .side-by-side {
+		width: 100%;
+		display: inline;
+	}
+
 	table.leaderboard .new-tournament-dialog li  {
 		float: left;
 		margin: 0 0 0 0;
+		display: inline-block;
+	}
+	table.leaderboard .new-tournament-dialog .full-width {
+		width: 100%;
 	}
 
 	table.leaderboard .new-tournament-dialog li .input-li {
@@ -100,6 +110,16 @@
 
 	table.leaderboard .new-tournament-dialog label {
 		width: 30%;
+	}
+
+	table.leaderboard .new-tournament-dialog input {
+		/* needs an explicit override of width because bootstrap is evil */
+		width: inherit;
+	}
+
+	table.leaderboard .new-tournament-dialog .new-tournament-close-button {
+		text-align: right;
+		float: right;
 	}
 
 	.player {

@@ -15,22 +15,22 @@ newTournamentDialogMarkup = """
 <div id="new-tournament-dialog" class="new-tournament-dialog">
 	<p>Ny omgång</p>
 	<ul>
-		<li>
-			<ul>
+		<li class="full-width">
+			<ul class="side-by-side">
 				<li><label for="new-tournament-date">Datum</label></li>
-				<li class="input-li"><input id="new-tournament-date" value="2014-03-13" name="newTournamentDate" data-provide="datepicker" data-date-format="yyyy-mm-dd" readonly/></li>
+				<li class="input-li"><input id="new-tournament-date" class="tournament-input" value="2014-03-13" name="newTournamentDate" data-provide="datepicker" data-date-format="yyyy-mm-dd" readonly/></li>
 			</ul>
 		</li>
-		<li>
-			<ul>
+		<li class="full-width">
+			<ul class="side-by-side">
 				<li><label for="new-tournament-alias">Alias</label></li>
-				<li class="input-li"><input type="text" id="new-tournament-alias" name="newTournamentAlias"/></li>
+				<li class="input-li"><input id="new-tournament-alias" class="tournament-input" name="newTournamentAlias"/></li>
 			</ul>
 		</li>
-		<li>
-			<ul>
+		<li class="full-width">
+			<ul class="side-by-side">
 				<li><a id="create-new-tournament">Skapa</a></li>
-				<li><a id="close-new-tournament" class="new-tournament-close-button">Stäng</a></li>
+				<li class="new-tournament-close-button"><a id="close-new-tournament">Stäng</a></li>
 			</ul>
 		</li>
 	</ul>
