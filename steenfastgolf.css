@@ -5,23 +5,7 @@ body {
 	padding: 0;
 }
 
-.imageleft {
-	text-align: left;
-	float: left;
-	display: block;
-	/*width: 20%;*/
-}
-
-.imageright {
-	vertical-align: top;
-	text-align: right;
-	float: right;
-	display: block;
-	/*width: 20%;*/
-}
-
 table.leaderboard {
-	/*width: 60%;*/
 }
 
 table.leaderboard th {
@@ -39,7 +23,7 @@ table.leaderboard input.newplayer {
 }
 
 table.leaderboard .new-tournament-dialog {
-	float: right;
+	/*float: right;*/
 	z-index: 1000;
 	border-radius: 4px;
 	padding: 8px 12px;
@@ -79,9 +63,9 @@ table.leaderboard .new-tournament-dialog li .input-li {
 	float: right;
 }
 
-table.leaderboard .new-tournament-dialog label {
-	width: 30%;
-}
+/*table.leaderboard .new-tournament-dialog label {*/
+	/*width: 30%;*/
+/*}*/
 
 table.leaderboard .new-tournament-dialog input {
 	/* needs an explicit override of width because bootstrap is evil */
@@ -106,7 +90,6 @@ table.leaderboard .new-tournament-dialog .new-tournament-close-button {
 	line-height: 0;
 	margin-bottom: 0;
 	padding: 1px;
-	height: 1em;
 	width: 3em;
 	color: #777;
 }
@@ -124,4 +107,7 @@ table.leaderboard .new-tournament-dialog .new-tournament-close-button {
 	text-align: center;
 	font-weight: bold;
 	color: #777;
+}
+.dropdown-menu {
+	width: 20em;
 }

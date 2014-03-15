@@ -6,8 +6,8 @@
       "observatory": {},
       "collection-helpers": {},
       "sass": {},
-      "bootstrap-datepicker2": {},
-      "bootstrap-3": {}
+      "bootstrap-3": {},
+      "bootstrap-datepicker2": {}
     },
     "packages": {
       "publish-with-relations": {
@@ -30,15 +30,15 @@
         "tag": "v0.0.5",
         "commit": "7ae0df0407339d4c6067bd0ddfa0b05562f29193"
       },
-      "bootstrap-datepicker2": {
-        "git": "https://github.com/deepwell/meteor-bootstrap-datepicker.git",
-        "tag": "v1.2.0",
-        "commit": "b7de18a7cc651ea665cda75048663f90d1a11d10"
-      },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
         "tag": "v3.1.1-1",
         "commit": "63dd38968828bb8963636df93e9a1c45e2dfe67e"
+      },
+      "bootstrap-datepicker2": {
+        "git": "https://github.com/deepwell/meteor-bootstrap-datepicker.git",
+        "tag": "v1.2.0",
+        "commit": "b7de18a7cc651ea665cda75048663f90d1a11d10"
       },
       "observatory-apollo": {
         "git": "https://github.com/superstringsoftware/observatory-apollo.git",
