@@ -45,6 +45,7 @@ eventMap = {
 			t_arr = tournaments.fetch()
 			id = Players.insert({name: document.getElementById("new-player").value, totalScore: Math.floor(t_arr.length * 104) })
 			Scores.insert({score: 104, tournamentId: tournament._id, playerId: id}) for tournament in t_arr
+			document.getElementById("new-player").value = ""
 	'keypress .score-input': (event) ->
 		if event.which == 13
 			id = event.target.id
