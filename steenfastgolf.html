@@ -31,31 +31,31 @@
 					{{/each}}
 					{{#if currentUser}}
 					<th class="dropdown">
-							<a href="#" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" style="padding: 0px;">
-								Ny
-								<b class="caret"></b>
-							</a >
-							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-								<form class="form-horizontal" role="form" class="dropdown-menu">
-									<div class="form-group">
-										<label for="new-tournament-date" class="col-sm-2 control-label">Datum</label>
-										<div class="col-sm-10">
-											<input type="date" class="form-control date-picker" id="new-tournament-date" data-date-format="yyyy-mm-dd" placeholder="2014-03-14" disabled>
-										</div>
+						<a href="#" class="btn dropdown-toggle new-tournament-dropdown" id="dropdownMenu1" data-toggle="dropdown">
+							Ny
+							<b class="caret"></b>
+						</a >
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+							<form class="form-horizontal" role="form" class="dropdown-menu">
+								<div class="form-group">
+									<label for="new-tournament-date" class="col-sm-2 control-label">Datum</label>
+									<div class="col-sm-10">
+										<input type="date" class="form-control date-picker" id="new-tournament-date" data-date-format="YYYY-MM-DD" placeholder="2014-03-14">
 									</div>
-									<div class="form-group">
-										<label for="new-tournament-alias" class="col-sm-2 control-label">Alias</label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control" id="new-tournament-alias" placeholder="Alias">
-										</div>
+								</div>
+								<div class="form-group" id="new-tournament-alias-div">
+									<label for="new-tournament-alias" class="col-sm-2 control-label">Alias</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="new-tournament-alias">
 									</div>
-									<div class="form-group">
-										<div class="col-sm-offset-2 col-sm-4">
-											<button type="button" id="create-new-tournament" class="btn btn-primary">Skapa</button>
-										</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-4">
+										<button type="button" id="create-new-tournament" class="btn btn-primary">Skapa</button>
 									</div>
-								</form>
-							</ul>
+								</div>
+							</form>
+						</ul>
 					</th>
 					{{/if}}
 					<th>Totalt</th>
@@ -89,7 +89,7 @@
 <template name="score">
 	{{#if currentUser}}
 	<td class="score">
-		<input class="score score-input" type="text" id="{{_id}}" size=3 value="{{score}}"/>
+		<input class="score score-input" type="text" id="{{_id}}" maxlength=3 value="{{score}}"/>
 	</td>
 	{{else}}
 	<td class="score">{{score}}</td>

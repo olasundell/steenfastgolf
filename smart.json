@@ -5,6 +5,7 @@
     "collection-helpers": {},
     "sass": {},
     "bootstrap-3": {},
-    "bootstrap-datepicker2": {}
+    "bootstrap3-datetimepicker": {},
+    "moment": {}
   }
 }
