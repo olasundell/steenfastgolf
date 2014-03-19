@@ -11,12 +11,26 @@ Template.leaderboard.players = Players.find {}, {sort: {totalScore: 1}}
 Template.leaderboard.tournaments = Tournaments.find {}
 Template.leaderboard.scores = Scores.find {}
 
+playerNameClicked = false
+
 closeNewTournamentDialog = ->
 	dialog = document.getElementById("new-tournament-dialog")
 	dialog.parentNode.removeChild(dialog)
 	newTournamentDialogOpen = false
 
 eventMap = {
+	'keypress .change-player-name': (event) ->
+		if event.which == 13
+			# TODO input validation!
+			Players.update({_id: event.target.parentNode.id.replace("player-","")},{$set: {name: event.target.value}})
+			event.target.parentNode.innerHtml = ''
+			event.target.parentNode.innerText = event.value
+			playerNameClicked = false
+	'click .player-name': (event) ->
+		if playerNameClicked
+			return false
+		event.currentTarget.innerHTML = '<input type="text" class="change-player-name" value="' + event.currentTarget.innerText + '"/>'
+		playerNameClicked = true
 	'click #new-tournament': ->
 		if not newTournamentDialogOpen
 			newTournament = document.getElementById("new-tournament")
@@ -41,11 +55,19 @@ eventMap = {
 		$('.dropdown-toggle').dropdown('toggle')
 	'keypress #new-player': (event) ->
 		if event.which == 13
+			newPlayerEL = document.getElementById("new-player")
+			newPlayerName = newPlayerEL.value
+			if not newPlayerName?
+				if newPlayerEL.className.indexOf("has-error") == -1
+					newPlayerEL.className += " has-error"
+
 			tournaments = Tournaments.find({})
 			t_arr = tournaments.fetch()
-			id = Players.insert({name: document.getElementById("new-player").value, totalScore: Math.floor(t_arr.length * 104) })
+			id = Players.insert({name: newPlayerName, totalScore: Math.floor(t_arr.length * 104) })
 			Scores.insert({score: 104, tournamentId: tournament._id, playerId: id}) for tournament in t_arr
-			document.getElementById("new-player").value = ""
+			newPlayerEL.value = ""
+			if newPlayerEL.className.indexOf("has-error") != -1
+				newPlayerEL.className.replace(" has-error", "")
 	'keypress .score-input': (event) ->
 		if event.which == 13
 			id = event.target.id
@@ -53,18 +75,12 @@ eventMap = {
 			recalcTotal player._id for player in Players.find({}).fetch()
 }
 
-
-
-#		onRender: (date) ->
-#			return date.valueOf() < now.valueOf() ? 'disabled' : ''
 Template.leaderboard.events = eventMap
 Template.leaderboard.rendered = ->
 	$('#new-tournament-date').datetimepicker({
 		format: 'YYYY-MM-DD',
 		pickTime: false
 	});
-#	$('.date-picker').datepicker({format: 'yyyy-mm-dd'})
-
 
 Handlebars.registerHelper 'userScores', (pId) ->
 	return Scores.find {playerId: pId}

@@ -23,8 +23,8 @@
       },
       "collection-helpers": {
         "git": "https://github.com/dburles/meteor-collection-helpers.git",
-        "tag": "v0.2.3",
-        "commit": "52c4c692421acea557fb329f43f65ed11b4832df"
+        "tag": "v0.2.4",
+        "commit": "e10ac53aa03e9656ee8ecaff7b9054dcb3a8a791"
       },
       "sass": {
         "git": "https://github.com/particle4dev/meteor-sass.git",

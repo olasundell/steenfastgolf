@@ -75,7 +75,7 @@
 
 <template name="player">
 	<tr class="player">
-		<td class="name">{{name}}</td>
+		<td class="player-name" id="player-{{_id}}">{{name}}</td>
 		{{#each userScores _id}}
 		{{> score }}
 		{{/each}}
