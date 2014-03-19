@@ -75,12 +75,31 @@ eventMap = {
 			recalcTotal player._id for player in Players.find({}).fetch()
 }
 
-Template.leaderboard.events = eventMap
-Template.leaderboard.rendered = ->
-	$('#new-tournament-date').datetimepicker({
-		format: 'YYYY-MM-DD',
-		pickTime: false
-	});
+# Only do stuff if we're logged in.
+if Meteor.userId()?
+	Template.leaderboard.events = eventMap
+
+	Template.leaderboard.rendered = ->
+		$('#new-tournament-date').datetimepicker({
+			format: 'YYYY-MM-DD',
+			pickTime: false
+		});
+		Accounts.onLogin( (validate) ->
+			Template.leaderboard.events = eventMap
+		)
+		Meteor.logout( ->
+			Template.leaderboard.events = {}
+		)
+else
+	Template.leaderboard.events = {}
+	Template.leaderboard.rendered = ->
+		Accounts.onLogin( (validate) ->
+			Template.leaderboard.events = eventMap
+		)
+		Meteor.logout( ->
+			Template.leaderboard.events = {}
+		)
+
 
 Handlebars.registerHelper 'userScores', (pId) ->
 	return Scores.find {playerId: pId}
