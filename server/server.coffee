@@ -45,7 +45,7 @@ initDb = (Players, Tournaments, Scores) ->
 
 		while j < p_ids.length
 			score = Math.floor(Math.random() * (max - min + 1)) + min
-			s = { score: score, tournamentId: t_ids[i], playerId: p_ids[j] }
+			s = { score: score, tournamentId: t_ids[i], playerId: p_ids[j], scoreDate: dates[i].date}
 			rid = Scores.insert(s)
 			TL.debug("Just inserted score " + s + ", return id is "+ rid)
 			recalcTotal p_ids[j], Scores, Players
@@ -89,11 +89,16 @@ Meteor.startup ->
 	Tournaments = new Meteor.Collection("tournaments")
 	Scores = new Meteor.Collection("scores")
 
-	initDbNow = true
+	initDbNow = false
 
 	if initDbNow
 		initDb(Players, Tournaments, Scores)
 
+	Players.remove {}
+	Tournaments.remove {}
+	Scores.remove {}
+
+	Accounts.config({forbidClientAccountCreation: true})
 
 	Meteor.publish "playersPublish", ->
 		return Players.find({})

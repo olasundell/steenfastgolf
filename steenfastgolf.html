@@ -96,6 +96,9 @@
 						<div class="col-sm-offset-2 col-sm-4">
 							<button type="button" id="edit-tournament-{{_id}}" class="btn btn-primary edit-tournament">Spara</button>
 						</div>
+						<div class="col-sm-offset-1 col-sm-4">
+							<button type="button" id="remove-tournament-{{_id}}" class="btn btn-danger remove-tournament">Ta bort</button>
+						</div>
 					</div>
 				</form>
 			</ul>
@@ -111,12 +114,12 @@
 			Ny
 			<b class="caret"></b>
 		</a >
-		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="new-tournament-ul">
 			<form class="form-horizontal" role="form" class="dropdown-menu">
 				<div class="form-group">
 					<label for="new-tournament-date" class="col-sm-2 control-label">Datum</label>
 					<div class="col-sm-10">
-						<input type="date" class="form-control date-picker" id="new-tournament-date" data-date-format="YYYY-MM-DD" placeholder="2014-03-14">
+						<input type="date" class="form-control date-picker" id="new-tournament-date" data-date-format="YYYY-MM-DD" value="{{getNow}}">
 					</div>
 				</div>
 				<div class="form-group" id="new-tournament-alias-div">
