@@ -115,3 +115,7 @@ table.leaderboard .new-tournament-dialog .new-tournament-close-button {
 .new-tournament-dropdown {
 	padding: 0px;
 }
+
+.dropdown-menu {
+	padding: 10px;
+}

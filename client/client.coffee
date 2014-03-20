@@ -7,7 +7,7 @@ Meteor.subscribe "scoresPublish"
 Meteor.subscribe "tournamentsPublish"
 Meteor.subscribe "playersPublish"
 
-Template.leaderboard.players = Players.find {}, {sort: {totalScore: 1}}
+Template.leaderboard.players = Players.find {}, {sort: {totalScore: 1, name: 1}}
 Template.leaderboard.tournaments = Tournaments.find {}
 Template.leaderboard.scores = Scores.find {}
 
@@ -19,17 +19,22 @@ closeNewTournamentDialog = ->
 	newTournamentDialogOpen = false
 
 eventMap = {
+	'click .edit-tournament': (event) ->
+		currentId = event.target.id.replace("edit-tournament-","")
+		newDate = document.getElementById("tournament-date-" + currentId).value
+		newAlias = document.getElementById("tournament-alias-" + currentId).value
+		Tournaments.update({_id: currentId}, {$set: {date: moment(newDate, 'YYYY-MM-DD'), alias: newAlias, formattedDate: moment(newDate, 'YYYY-MM-DD').format('D/M')}})
 	'keypress .change-player-name': (event) ->
 		if event.which == 13
 			# TODO input validation!
 			Players.update({_id: event.target.parentNode.id.replace("player-","")},{$set: {name: event.target.value}})
 			event.target.parentNode.innerHtml = ''
-			event.target.parentNode.innerText = event.value
+			event.target.parentNode.innerText = event.target.value
 			playerNameClicked = false
 	'click .player-name': (event) ->
 		if playerNameClicked
 			return false
-		event.currentTarget.innerHTML = '<input type="text" class="change-player-name" value="' + event.currentTarget.innerText + '"/>'
+		event.currentTarget.innerHTML = '<input type="text" class="change-player-name" autofocus="autofocus" value="' + event.currentTarget.innerText + '"/>'
 		playerNameClicked = true
 	'click #new-tournament': ->
 		if not newTournamentDialogOpen
@@ -84,6 +89,10 @@ if Meteor.userId()?
 			format: 'YYYY-MM-DD',
 			pickTime: false
 		});
+		$('.date-picker').datetimepicker({
+			format: 'YYYY-MM-DD',
+			pickTime: false
+		});
 		Accounts.onLogin( (validate) ->
 			Template.leaderboard.events = eventMap
 		)
@@ -103,6 +112,9 @@ else
 
 Handlebars.registerHelper 'userScores', (pId) ->
 	return Scores.find {playerId: pId}
+
+Handlebars.registerHelper 'formatDate', (date) ->
+	return moment(date).format('YYYY-MM-DD')
 
 recalcTotal = (pId) ->
 	total = 0
