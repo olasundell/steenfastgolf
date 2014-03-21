@@ -94,9 +94,9 @@ Meteor.startup ->
 	if initDbNow
 		initDb(Players, Tournaments, Scores)
 
-	Players.remove {}
-	Tournaments.remove {}
-	Scores.remove {}
+#	Players.remove {}
+#	Tournaments.remove {}
+#	Scores.remove {}
 
 	Accounts.config({forbidClientAccountCreation: true})
 

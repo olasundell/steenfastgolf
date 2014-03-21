@@ -45,18 +45,26 @@ createNewTournament = ->
 	$('.dropdown-toggle').dropdown('toggle')
 	return true
 
+updateTournament = (currentId) ->
+	newDate = document.getElementById("tournament-date-" + currentId).value
+	newAlias = document.getElementById("tournament-alias-" + currentId).value
+	Tournaments.update({_id: currentId}, {$set: {date: moment(newDate, 'YYYY-MM-DD'), alias: newAlias, formattedDate: moment(newDate, 'YYYY-MM-DD').format('D/M')}})
+
 eventMap = {
 	'click .edit-tournament': (event) ->
-		currentId = event.target.id.replace("edit-tournament-","")
-		newDate = document.getElementById("tournament-date-" + currentId).value
-		newAlias = document.getElementById("tournament-alias-" + currentId).value
-		Tournaments.update({_id: currentId}, {$set: {date: moment(newDate, 'YYYY-MM-DD'), alias: newAlias, formattedDate: moment(newDate, 'YYYY-MM-DD').format('D/M')}})
+		updateTournament(event.target.id.replace("edit-tournament-",""))
+	'keypress .change-tournament-alias': (event) ->
+		if event.which == 13
+			updateTournament(event.target.id.replace("tournament-alias-",""))
 	'keypress .change-player-name': (event) ->
 		if event.which == 13
 			# TODO input validation!
 			Players.update({_id: event.target.parentNode.id.replace("player-","")},{$set: {name: event.target.value}})
 			removePlayerInputField.call(this, event, event.target.value)
 			oldPlayerName = ""
+	'keypress #new-tournament-alias': (event) ->
+		if event.which == 13
+			return createNewTournament()
 	'keyup .change-player-name': (event) ->
 		if event.which == 27
 			removePlayerInputField.call(this, event, oldPlayerName)
