@@ -11,7 +11,6 @@ Template.leaderboard.players = Players.find {}, {sort: {totalScore: 1, name: 1}}
 Template.leaderboard.tournaments = Tournaments.find {}, {sort: {date: 1}}
 Template.leaderboard.scores = Scores.find {}, {sort: {scoreDate: 1}}
 
-this.playerNameClicked = false
 oldPlayerName = ""
 
 closeNewTournamentDialog = ->
@@ -75,12 +74,12 @@ eventMap = {
 		removePlayerInputField(this, event, oldPlayerName)
 		oldPlayerName = ""
 	'click .player-name': (event) ->
-		if this.playerNameClicked and this.playerNameClicked is true
+		if Session.get("playerNameClicked") and Session.get("playerNameClicked") is true
 			return false
 		oldPlayerName = event.target.innerText
-		event.currentTarget.innerHTML = '<input type="text" class="change-player-name" autofocus="autofocus" value="' + event.currentTarget.innerText + '"/>
+		event.target.innerHTML = '<input type="text" class="change-player-name" autofocus="autofocus" value="' + event.target.innerText + '"/>
 		<button type="button" class="btn btn-danger remove-player-button" id="remove-'+event.target.id+'">Ta bort</button>'
-		this.playerNameClicked = true
+		Session.set("playerNameClicked", true)
 	'click #new-tournament': ->
 		if not newTournamentDialogOpen
 			newTournament = document.getElementById("new-tournament")
