@@ -152,6 +152,23 @@ Handlebars.registerHelper 'formatDate', (date) ->
 Handlebars.registerHelper 'getNow', ->
 	return moment().format('YYYY-MM-DD')
 
+#curPath = () ->
+#	c=window.location.pathname
+#	b=c.slice(0,-1)
+#	a=c.slice(-1)
+#	if b==""
+#		return "/"
+#	else if a=="/"
+#		return b
+#
+#	return c
+#
+#Handlebars.registerHelper('active', (path) ->
+#	cp = curPath()
+#	TL.info(cp)
+#	return cp == path ? 'active' : '';
+#)
+
 recalcTotal = (pId) ->
 	total = 0
 	num = 0

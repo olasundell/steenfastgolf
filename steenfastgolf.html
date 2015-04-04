@@ -6,12 +6,23 @@
 <body>
 <div class="container-fluid">
 	<div class="row">
+	</div>
+	<div class="row">
 		<div class="col-md-2 col-lg-2">
 			<img class="img-responsive hidden-sm hidden-xs" src="left.jpg"/>
 		</div>
 		<div class="col-md-8 col-lg-8">
-			{{loginButtons}}
-			{{> leaderboard}}
+			<div class="row text-center">
+				<ul class="nav nav-pills" style="display: inline-block">
+					<li class="active"><a href="http://steenfast.se/golf/">Singel</a></li>
+					<li><a href="http://steenfast.se/golflag/">Lag</a></li>
+					<li><a href="http://steenfast.se/putt/">Putt</a></li>
+				</ul>
+			</div>
+			<div class="row">
+				{{loginButtons}}
+				{{> leaderboard}}
+			</div>
 		</div>
 		<div class="col-md-2 col-lg-2">
 			<img class="img-responsive hidden-sm hidden-xs" src="right.jpg"/>
